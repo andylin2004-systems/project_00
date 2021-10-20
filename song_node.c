@@ -42,3 +42,15 @@ int checkIfShouldPlaceAlphabet(struct song_node* prev, struct song_node* toInser
     }
     return 0;
 }
+
+void print_node(struct song_node* node){
+    printf("%s by %s", node->name, node->artist);
+}
+
+void print_list(struct song_node* front){
+    struct song_node *current = front;
+    while(current){
+        print_node(current);
+        current = current->next;
+    }
+}
