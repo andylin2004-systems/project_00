@@ -7,6 +7,8 @@ struct song_node{
     struct song_node *next;
 };
 
+int checkIfShouldPlaceAlphabet(struct song_node *prev, struct song_node *toInsert, struct song_node *next);
+
 struct song_node* addToFront(struct song_node* front, struct song_node* toAdd){
     toAdd->next = front;
     return toAdd;
