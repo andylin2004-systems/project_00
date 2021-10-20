@@ -1,3 +1,3 @@
 #include <stdio.h>
 
-struct song_node library[27];
+struct songNode library[27];
