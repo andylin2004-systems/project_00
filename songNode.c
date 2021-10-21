@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <time.h>
 
 struct songNode{
     char name[100];
@@ -55,13 +57,59 @@ void print_list(struct songNode* front){
     }
 }
 
-struct songNode* findNode(struct songNode* front, char name[100], char artist[100]){
+struct songNode* findNodeByNameAndArtist(struct songNode* front, char name[100], char artist[100]){
     struct songNode *current = front;
     while(current){
         if (strcmp(current->artist, artist) == 0 && strcmp(current->name, name)){
             return current;
         }
         current = current->next;
+    }
+    return NULL;
+}
+
+struct songNode* findNodeByArtist(struct songNode* front, char artist[100]){
+    struct songNode *current = front;
+    while(current){
+        if (strcmp(current->artist, artist) == 0){
+            return current;
+        }
+        current = current->next;
+    }
+    return NULL;
+}
+
+struct songNode* returnRandomNode(struct songNode* front){
+    srand(time(NULL));
+    struct songNode *current = front;
+    struct songNode *chosenOne;
+    int i;
+    for (i = 2; current; i++)
+    {
+        if (rand() % i == 0){
+            chosenOne = current;
+        }
+        current = current->next;
+    }
+    return chosenOne;
+}
+
+struct songNode* removeNodeByNameAndArtist(struct songNode* front, char name[100], char artist[100]){
+    struct songNode *prev = front;
+    struct songNode *current = front;
+    struct songNode *next = current->next;
+    while(current){
+        if (strcmp(current->artist, artist) == 0 && strcmp(current->name, name)){
+            if (prev == current){
+                front = current->next;
+            }else{
+                prev->next = next;
+                current->next = NULL;
+            }
+        }
+        prev = current;
+        current = next;
+        next = next->next;
     }
     return NULL;
 }
