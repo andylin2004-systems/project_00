@@ -35,7 +35,18 @@ void addSong(struct songNode* song){
     }
 }
 
-struct songNode* findSong(char name[100], char artist[100]){
+struct songNode* findSongByNameAndArtist(char name[100], char artist[100]){
     int slot = whereInArray(artist);
     return findNodeByNameAndArtist(library[slot], name, artist);
 }
+
+struct songNode* findSongByArtist(char artist[100]){
+    int slot = whereInArray(artist);
+    return findNodeByArtist(library[slot], artist);
+}
+
+void printSongList(char letter){
+    int slot = whereInArray(letter);
+    print_list(library[slot]);
+}
+
