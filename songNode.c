@@ -113,3 +113,12 @@ struct songNode* removeNodeByNameAndArtist(struct songNode* front, char name[100
     }
     return NULL;
 }
+
+void freeList(struct songNode* front){
+    struct songNode *current = front;
+    while (current){
+        struct songNode *temp = current;
+        free(current);
+        current = current->next;
+    }
+}
