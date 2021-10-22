@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <strings.h>
+#include <time.h>
 #include "songNode.h"
 
 struct songNode* library[27];
@@ -65,3 +66,13 @@ void printLibrary(){
         print_list(library[i]);
     }
 }
+
+void shuffle(int count){
+    srand(time(NULL));
+    int i;
+    for (i = 0; i < count; i++){
+        int slot = rand() % 27;
+        print_node(returnRandomNode(library[slot]));
+    }
+}
+
