@@ -58,3 +58,10 @@ void printSongByArtist(char artist[100]){
         current = current->next;
     }
 }
+
+void printLibrary(){
+    int i;
+    for (i = 0; i < 26; i++){
+        print_list(library[i]);
+    }
+}
