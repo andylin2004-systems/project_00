@@ -76,3 +76,7 @@ void shuffle(int count){
     }
 }
 
+void deleteSong(char name[100], char artist[100]){
+    int slot = whereInArray(artist);
+    removeNodeByNameAndArtist(library[slot], name, artist);
+}
