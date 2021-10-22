@@ -24,5 +24,7 @@ void addSong(struct songNode* song){
     }
     if (library[slot] == NULL){
         addToFront(library[slot], song);
+    }else{
+        addBasedOnAlphabet(library[slot], song);
     }
 }
