@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <strings.h>
 #include "songNode.h"
 
 struct songNode* library[27];
@@ -45,8 +46,15 @@ struct songNode* findSongByArtist(char artist[100]){
     return findNodeByArtist(library[slot], artist);
 }
 
-void printSongList(char letter){
+void printSongListByAlphabet(char letter){
     int slot = whereInArray(letter);
     print_list(library[slot]);
 }
 
+void printSongByArtist(char artist[100]){
+    struct songNode *current = findSongByArtist(artist);
+    while (strcmp(current->artist, artist) == 0){
+        print_node(current);
+        current = current->next;
+    }
+}
