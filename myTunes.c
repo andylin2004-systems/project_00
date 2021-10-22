@@ -10,21 +10,21 @@ void allocateSongs(){
     }
 }
 
-int whereInArray(struct songNode* song){
-    if (song->artist[0] >= 'A' && song->artist[0] <= 'Z')
+int whereInArray(char artist[100]){
+    if (artist[0] >= 'A' && artist[0] <= 'Z')
     {
-        return song->artist[0] - 'A';
+        return artist[0] - 'A';
     }
-    else if (song->artist[0] >= 'a' && song->artist[0] <= 'z')
+    else if (artist[0] >= 'a' && artist[0] <= 'z')
     {
-        return song->artist[0] - 'a';
+        return artist[0] - 'a';
     }else{
         return 26;
     }
 }
 
 void addSong(struct songNode* song){
-    int slot = whereInArray(song);
+    int slot = whereInArray(song->artist);
     if (library[slot] == NULL)
     {
         addToFront(library[slot], song);
@@ -35,3 +35,7 @@ void addSong(struct songNode* song){
     }
 }
 
+struct songNode* findSong(char name[100], char artist[100]){
+    int slot = whereInArray(artist);
+    return findNodeByNameAndArtist(library[slot], name, artist);
+}
