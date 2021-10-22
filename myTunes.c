@@ -80,3 +80,11 @@ void deleteSong(char name[100], char artist[100]){
     int slot = whereInArray(artist);
     removeNodeByNameAndArtist(library[slot], name, artist);
 }
+
+void clearLibrary(){
+    int i;
+    for (i = 0; i < 27; i++){
+        freeList(library[i]);
+    }
+    allocateSongs();
+}
