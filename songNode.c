@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-struct songNode{
+struct songNode
+{
     char name[100];
     char artist[100];
     struct songNode *next;
@@ -11,28 +12,36 @@ struct songNode{
 
 int checkIfShouldPlaceAlphabet(struct songNode *prev, struct songNode *toInsert, struct songNode *next);
 
-struct songNode* createNode(char name[100], char artist[100]){
+struct songNode *createNode(char name[100], char artist[100])
+{
     struct songNode *new = malloc(sizeof(struct songNode));
     strcpy(new->name, name);
     strcpy(new->artist, artist);
     return new;
 }
-struct songNode* addToFront(struct songNode* front, struct songNode* toAdd){
+
+struct songNode *addToFront(struct songNode *front, struct songNode *toAdd)
+{
     toAdd->next = front;
     front = toAdd;
     return toAdd;
 }
 
-void addBasedOnAlphabet(struct songNode* front, struct songNode* toInsert){
+struct songNode * addBasedOnAlphabet(struct songNode *front, struct songNode *toInsert)
+{
     struct songNode *prev = front;
     struct songNode *next = front->next;
+    if (strcmp(front->artist, toInsert->artist) > 0 || (strcmp(front->artist, toInsert->artist) == 0 && strcmp(front->name, toInsert->name) > 0) && prev != NULL && next == NULL)
+    {
+        return addToFront(front, toInsert);
+    }
     while (next)
     {
         if (checkIfShouldPlaceAlphabet(prev, toInsert, next))
         {
             prev->next = toInsert;
             toInsert->next = next;
-            return;
+            return front;
         }
         else
         {
@@ -42,11 +51,15 @@ void addBasedOnAlphabet(struct songNode* front, struct songNode* toInsert){
     }
     //assuming that there is nothing else after
     prev->next = toInsert;
+    return front;
 }
 
-int checkIfShouldPlaceAlphabet(struct songNode* prev, struct songNode* toInsert, struct songNode* next){
-    if (strcmp(prev->artist, toInsert->artist) < 0 && strcmp(toInsert->artist, next->artist) < 0){
-        if (strcmp(prev->name, toInsert->name) < 0 && strcmp(toInsert->name, next->name) < 0){
+int checkIfShouldPlaceAlphabet(struct songNode *prev, struct songNode *toInsert, struct songNode *next)
+{
+    if (strcmp(prev->artist, toInsert->artist) < 0 && strcmp(toInsert->artist, next->artist) < 0)
+    {
+        if (strcmp(prev->name, toInsert->name) < 0 && strcmp(toInsert->name, next->name) < 0)
+        {
             return 1;
         }
         else
@@ -57,23 +70,29 @@ int checkIfShouldPlaceAlphabet(struct songNode* prev, struct songNode* toInsert,
     return 0;
 }
 
-void print_node(struct songNode* node){
+void print_node(struct songNode *node)
+{
     printf("{%s, %s}", node->artist, node->name);
 }
 
-void print_list(struct songNode* front){
+void print_list(struct songNode *front)
+{
     struct songNode *current = front;
-    while(current){
+    while (current)
+    {
         print_node(current);
         printf(", ");
         current = current->next;
     }
 }
 
-struct songNode* findNodeByNameAndArtist(struct songNode* front, char name[100], char artist[100]){
+struct songNode *findNodeByNameAndArtist(struct songNode *front, char name[100], char artist[100])
+{
     struct songNode *current = front;
-    while(current){
-        if (strcmp(current->artist, artist) == 0 && strcmp(current->name, name)){
+    while (current)
+    {
+        if (strcmp(current->artist, artist) == 0 && strcmp(current->name, name))
+        {
             return current;
         }
         current = current->next;
@@ -81,10 +100,13 @@ struct songNode* findNodeByNameAndArtist(struct songNode* front, char name[100],
     return NULL;
 }
 
-struct songNode* findNodeByArtist(struct songNode* front, char artist[100]){
+struct songNode *findNodeByArtist(struct songNode *front, char artist[100])
+{
     struct songNode *current = front;
-    while(current){
-        if (strcmp(current->artist, artist) == 0){
+    while (current)
+    {
+        if (strcmp(current->artist, artist) == 0)
+        {
             return current;
         }
         current = current->next;
@@ -92,14 +114,16 @@ struct songNode* findNodeByArtist(struct songNode* front, char artist[100]){
     return NULL;
 }
 
-struct songNode* returnRandomNode(struct songNode* front){
+struct songNode *returnRandomNode(struct songNode *front)
+{
     srand(time(NULL));
     struct songNode *current = front;
     struct songNode *chosenOne;
     int i;
     for (i = 2; current; i++)
     {
-        if (rand() % i == 0){
+        if (rand() % i == 0)
+        {
             chosenOne = current;
         }
         current = current->next;
@@ -107,15 +131,21 @@ struct songNode* returnRandomNode(struct songNode* front){
     return chosenOne;
 }
 
-struct songNode* removeNodeByNameAndArtist(struct songNode* front, char name[100], char artist[100]){
+struct songNode *removeNodeByNameAndArtist(struct songNode *front, char name[100], char artist[100])
+{
     struct songNode *prev = front;
     struct songNode *current = front;
     struct songNode *next = current->next;
-    while(current){
-        if (strcmp(current->artist, artist) == 0 && strcmp(current->name, name)){
-            if (prev == current){
+    while (current)
+    {
+        if (strcmp(current->artist, artist) == 0 && strcmp(current->name, name))
+        {
+            if (prev == current)
+            {
                 front = current->next;
-            }else{
+            }
+            else
+            {
                 prev->next = next;
                 current->next = NULL;
             }
@@ -127,9 +157,11 @@ struct songNode* removeNodeByNameAndArtist(struct songNode* front, char name[100
     return NULL;
 }
 
-void freeList(struct songNode* front){
+void freeList(struct songNode *front)
+{
     struct songNode *current = front;
-    while (current){
+    while (current)
+    {
         struct songNode *temp = current;
         free(current);
         current = current->next;

@@ -35,29 +35,7 @@ void addSong(struct songNode *library[], struct songNode *song)
     }
     else
     {
-        if (library[slot]->next == NULL)
-        {
-            if (strcmp(library[slot]->artist, song->artist) < 0)
-            {
-                addBasedOnAlphabet(library[slot], song);
-            }
-            else if (strcmp(library[slot]->artist, song->artist) > 0)
-            {
-                library[slot] = addToFront(library[slot], song);
-            }
-            else if (strcmp(library[slot]->name, song->name) < 0)
-            {
-                addBasedOnAlphabet(library[slot], song);
-            }
-            else
-            {
-                library[slot] = addToFront(library[slot], song);
-            }
-        }
-        else
-        {
-            addBasedOnAlphabet(library[slot], song);
-        }
+        library[slot] = addBasedOnAlphabet(library[slot], song);
     }
 }
 

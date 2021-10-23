@@ -8,7 +8,7 @@ struct songNode *createNode(char name[100], char artist[100]);
 
 struct songNode* addToFront(struct songNode* front, struct songNode* toAdd);
 
-void addBasedOnAlphabet(struct songNode* front, struct songNode* toInsert);
+struct songNode * addBasedOnAlphabet(struct songNode* front, struct songNode* toInsert);
 
 int checkIfShouldPlaceAlphabet(struct songNode* prev, struct songNode* toInsert, struct songNode* next);
 
