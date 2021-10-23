@@ -7,7 +7,7 @@ run:
 main.o: main.c myTunes.h
 	gcc -c main.c
 
-myTunes.o: myTunes.c myTunes.h songNode.h
+myTunes.o: myTunes.c myTunes.h songNode.h songNode.o
 	gcc -c myTunes.c
 
 songNode.o: songNode.c songNode.h
