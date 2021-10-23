@@ -91,7 +91,7 @@ struct songNode *findNodeByNameAndArtist(struct songNode *front, char name[100],
     struct songNode *current = front;
     while (current)
     {
-        if (strcmp(current->artist, artist) == 0 && strcmp(current->name, name))
+        if (strcmp(current->artist, artist) == 0 && strcmp(current->name, name) == 0)
         {
             return current;
         }

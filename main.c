@@ -14,6 +14,12 @@ int main(){
     addSong(library, createNode("chemical bond", "death pact"));
     addSong(library, createNode("sophie so", "hippo campus"));
     addSong(library, createNode("elephant boys", "hippo campus"));
-    printf("LINKED LIST TEST\n\nTESTING PRINT_LIST");
+    printf("LINKED LIST TEST\n\nTESTING PRINT_LIST\n");
     printLibrary(library);
+    printf("Finding node for Chemical Bond");
+    if (findSongByNameAndArtist(library, "chemical bond", "death pact")){
+        printf("found it!");
+    }else{
+        printf("big oof");
+    }
 }
