@@ -4,6 +4,8 @@ struct songNode{
     struct songNode *next;
 };
 
+struct songNode *createNode(char name[100], char artist[100]);
+
 struct songNode* addToFront(struct songNode* front, struct songNode* toAdd);
 
 void addBasedOnAlphabet(struct songNode* front, struct songNode* toInsert);
