@@ -11,7 +11,9 @@ int main(){
     addSong(library, createNode("time", "pink floyd"));
     addSong(library, createNode("paranoid android", "radiohead"));
     addSong(library, createNode("street spirit (fade out)", "radiohead"));
+    addSong(library, createNode("chemical bond", "death pact"));
+    addSong(library, createNode("sophie so", "hippo campus"));
+    addSong(library, createNode("elephant boys", "hippo campus"));
     printf("LINKED LIST TEST\n\nTESTING PRINT_LIST");
     printLibrary(library);
-    print_node(&library[0]);
 }

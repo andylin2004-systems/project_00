@@ -28,15 +28,20 @@ void addBasedOnAlphabet(struct songNode* front, struct songNode* toInsert){
     struct songNode *next = front->next;
     while (next)
     {
-        if (checkIfShouldPlaceAlphabet(prev, toInsert, next)){
+        if (checkIfShouldPlaceAlphabet(prev, toInsert, next))
+        {
             prev->next = toInsert;
             toInsert->next = next;
             return;
-        }else{
+        }
+        else
+        {
             prev = next;
             next = next->next;
         }
     }
+    //assuming that there is nothing else after
+    prev->next = toInsert;
 }
 
 int checkIfShouldPlaceAlphabet(struct songNode* prev, struct songNode* toInsert, struct songNode* next){
