@@ -49,7 +49,7 @@ struct songNode* findSongByArtist(char artist[100]){
 }
 
 void printSongListByAlphabet(char letter){
-    int slot = whereInArray(letter);
+    int slot = whereInArray(&letter);
     print_list(library[slot]);
 }
 
