@@ -1,4 +1,5 @@
 struct songNode* library[27];
+struct songNode *createNode(char name[100], char artist[100]);
 void allocateSongs();
 int whereInArray(char artist[100]);
 void addSong(struct songNode* song);
