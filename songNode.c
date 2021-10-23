@@ -53,13 +53,14 @@ int checkIfShouldPlaceAlphabet(struct songNode* prev, struct songNode* toInsert,
 }
 
 void print_node(struct songNode* node){
-    printf("%s, %s", node->artist, node->name);
+    printf("{%s, %s}", node->artist, node->name);
 }
 
 void print_list(struct songNode* front){
     struct songNode *current = front;
     while(current){
         print_node(current);
+        printf(", ");
         current = current->next;
     }
 }
