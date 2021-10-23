@@ -60,7 +60,8 @@ void printSongListByAlphabet(struct songNode *library[], char letter)
 void printSongByArtist(struct songNode *library[], char artist[100])
 {
     struct songNode *current = findSongByArtist(library, artist);
-    if (current == NULL){
+    if (current == NULL)
+    {
         printf("no songs by %s found", artist);
     }
     while (current && strcmp(current->artist, artist) == 0)
@@ -87,6 +88,10 @@ void shuffle(struct songNode *library[], int count)
     for (i = 0; i < count; i++)
     {
         int slot = rand() % 27;
+        if (library[slot] == NULL){
+            i--;
+            continue;
+        }
         print_node(returnRandomNode(library[slot]));
     }
 }
