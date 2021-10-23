@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <strings.h>
 #include <time.h>
+#include <stdlib.h>
 #include "songNode.h"
 
 struct songNode* library[27];
