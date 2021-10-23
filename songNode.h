@@ -4,8 +4,6 @@ struct songNode{
     struct songNode *next;
 };
 
-int checkIfShouldPlaceAlphabet(struct songNode *prev, struct songNode *toInsert, struct songNode *next);
-
 struct songNode* addToFront(struct songNode* front, struct songNode* toAdd);
 
 void addBasedOnAlphabet(struct songNode* front, struct songNode* toInsert);
