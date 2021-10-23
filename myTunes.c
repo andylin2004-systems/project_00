@@ -85,14 +85,16 @@ void shuffle(struct songNode *library[], int count)
 {
     srand(time(NULL));
     int i;
+    int slot;
     for (i = 0; i < count; i++)
     {
-        int slot = rand() % 27;
+        slot = rand() % 27;
         if (library[slot] == NULL){
             i--;
             continue;
         }
         print_node(returnRandomNode(library[slot]));
+        printf(", ");
     }
 }
 

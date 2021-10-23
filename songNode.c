@@ -118,7 +118,7 @@ struct songNode *returnRandomNode(struct songNode *front)
 {
     srand(time(NULL));
     struct songNode *current = front;
-    struct songNode *chosenOne;
+    struct songNode *chosenOne = current;
     int i;
     for (i = 2; current; i++)
     {
