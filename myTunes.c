@@ -60,9 +60,13 @@ void printSongListByAlphabet(struct songNode *library[], char letter)
 void printSongByArtist(struct songNode *library[], char artist[100])
 {
     struct songNode *current = findSongByArtist(library, artist);
-    while (strcmp(current->artist, artist) == 0)
+    if (current == NULL){
+        printf("no songs by %s found", artist);
+    }
+    while (current && strcmp(current->artist, artist) == 0)
     {
         print_node(current);
+        printf(", ");
         current = current->next;
     }
 }
