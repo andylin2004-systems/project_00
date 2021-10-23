@@ -4,13 +4,9 @@
 #include <stdlib.h>
 #include "songNode.h"
 
-struct songNode* library[27];
-
-void allocateSongs(){
-    int i;
-    for (i = 0; i < 27; i++){
-        library[i] = malloc(sizeof(struct songNode));
-    }
+struct songNode * allocateSongs(){
+    struct songNode *library = calloc(27, sizeof(struct songNode));
+    return library;
 }
 
 int whereInArray(char artist[100]){
@@ -26,11 +22,12 @@ int whereInArray(char artist[100]){
     }
 }
 
-void addSong(struct songNode* song){
+void addSong(struct songNode *library[], struct songNode* song){
     int slot = whereInArray(song->artist);
+    printf("e");
     if (library[slot] == NULL)
     {
-        addToFront(library[slot], song);
+        library[slot] = addToFront(library[slot], song);
     }
     else
     {
@@ -38,37 +35,37 @@ void addSong(struct songNode* song){
     }
 }
 
-struct songNode* findSongByNameAndArtist(char name[100], char artist[100]){
+struct songNode* findSongByNameAndArtist(struct songNode *library[], char name[100], char artist[100]){
     int slot = whereInArray(artist);
     return findNodeByNameAndArtist(library[slot], name, artist);
 }
 
-struct songNode* findSongByArtist(char artist[100]){
+struct songNode* findSongByArtist(struct songNode *library[], char artist[100]){
     int slot = whereInArray(artist);
     return findNodeByArtist(library[slot], artist);
 }
 
-void printSongListByAlphabet(char letter){
+void printSongListByAlphabet(struct songNode *library[], char letter){
     int slot = whereInArray(&letter);
     print_list(library[slot]);
 }
 
-void printSongByArtist(char artist[100]){
-    struct songNode *current = findSongByArtist(artist);
+void printSongByArtist(struct songNode *library[], char artist[100]){
+    struct songNode *current = findSongByArtist(library, artist);
     while (strcmp(current->artist, artist) == 0){
         print_node(current);
         current = current->next;
     }
 }
 
-void printLibrary(){
+void printLibrary(struct songNode *library[]){
     int i;
     for (i = 0; i < 26; i++){
         print_list(library[i]);
     }
 }
 
-void shuffle(int count){
+void shuffle(struct songNode *library[], int count){
     srand(time(NULL));
     int i;
     for (i = 0; i < count; i++){
@@ -77,15 +74,14 @@ void shuffle(int count){
     }
 }
 
-void deleteSong(char name[100], char artist[100]){
+void deleteSong(struct songNode *library[], char name[100], char artist[100]){
     int slot = whereInArray(artist);
     removeNodeByNameAndArtist(library[slot], name, artist);
 }
 
-void clearLibrary(){
+void clearLibrary(struct songNode *library[]){
     int i;
     for (i = 0; i < 27; i++){
         freeList(library[i]);
     }
-    allocateSongs();
 }
