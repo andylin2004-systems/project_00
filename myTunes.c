@@ -78,6 +78,7 @@ void printLibrary(struct songNode *library[])
     for (i = 0; i < 26; i++)
     {
         print_list(library[i]);
+        printf(", ");
     }
 }
 

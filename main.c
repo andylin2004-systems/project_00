@@ -34,4 +34,7 @@ int main(){
     printSongByArtist(library, "rezz");
     printf("\nTESTING SHUFFLE (4 songs)");
     shuffle(library, 4);
+    printf("\nTESTING REMOVE SONG");
+    deleteSong(library, "sophie so", "hippo campus");
+    printLibrary(library);
 }
