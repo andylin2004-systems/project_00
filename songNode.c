@@ -131,26 +131,24 @@ struct songNode *returnRandomNode(struct songNode *front)
     return chosenOne;
 }
 
-void removeNodeByNameAndArtist(struct songNode *front, char name[100], char artist[100])
+struct songNode* removeNodeByNameAndArtist(struct songNode *front, char name[100], char artist[100])
 {
     struct songNode *prev = front;
     struct songNode *current = front;
     struct songNode *next = current->next;
     while (current)
     {
-        print_node(current);
         if (strcmp(current->artist, artist) == 0 && strcmp(current->name, name) == 0)
         {
             if (prev == current)
             {
                 front = current->next;
-                return;
             }
             else
             {
-                prev->next = next;
-                return;
+                prev->next = next; 
             }
+            return front;
         }
         prev = current;
         current = next;

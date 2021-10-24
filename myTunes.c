@@ -78,7 +78,6 @@ void printLibrary(struct songNode *library[])
     for (i = 0; i < 26; i++)
     {
         print_list(library[i]);
-        printf(", ");
     }
 }
 
@@ -102,7 +101,7 @@ void shuffle(struct songNode *library[], int count)
 void deleteSong(struct songNode *library[], char name[100], char artist[100])
 {
     int slot = whereInArray(artist);
-    removeNodeByNameAndArtist(library[slot], name, artist);
+    library[slot] = removeNodeByNameAndArtist(library[slot], name, artist);
 }
 
 void clearLibrary(struct songNode *library[])

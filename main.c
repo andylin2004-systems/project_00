@@ -35,6 +35,10 @@ int main(){
     printf("\nTESTING SHUFFLE (4 songs)");
     shuffle(library, 4);
     printf("\nTESTING REMOVE SONG");
+    printf("\nRemoving sophie so by hippo campus\n");
     deleteSong(library, "sophie so", "hippo campus");
+    printLibrary(library);
+    printf("\nRemoving chemical bond by death pact\n");
+    deleteSong(library, "chemical bond", "death pact");
     printLibrary(library);
 }
