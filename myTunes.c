@@ -54,7 +54,11 @@ struct songNode *findSongByArtist(struct songNode *library[], char artist[100])
 void printSongListByAlphabet(struct songNode *library[], char letter)
 {
     int slot = whereInArray(&letter);
-    print_list(library[slot]);
+    if (library[slot]){
+        print_list(library[slot]);
+    }else{
+        printf("No songs found for artists beginning with %c", letter);
+    }
 }
 
 void printSongByArtist(struct songNode *library[], char artist[100])

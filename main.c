@@ -41,4 +41,10 @@ int main(){
     printf("\nRemoving chemical bond by death pact\n");
     deleteSong(library, "chemical bond", "death pact");
     printLibrary(library);
+    printf("\nFINDING SONGS BY LETTER (letter p)\n");
+    printSongListByAlphabet(library, 'p');
+    printf("\n(letter h)\n");
+    printSongListByAlphabet(library, 'h');
+    printf("\n(letter b)\n");
+    printSongListByAlphabet(library, 'b');
 }
