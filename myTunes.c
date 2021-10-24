@@ -113,6 +113,6 @@ void clearLibrary(struct songNode *library[])
     int i;
     for (i = 0; i < 27; i++)
     {
-        freeList(library[i]);
+        library[i] = freeList(library[i]);
     }
 }

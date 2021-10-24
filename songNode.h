@@ -24,4 +24,4 @@ struct songNode * returnRandomNode(struct songNode * front);
 
 struct songNode* removeNodeByNameAndArtist(struct songNode * front, char name[100], char artist[100]);
 
-void freeList(struct songNode *front);
+struct songNode * freeList(struct songNode *front);

@@ -156,7 +156,7 @@ struct songNode* removeNodeByNameAndArtist(struct songNode *front, char name[100
     }
 }
 
-void freeList(struct songNode *front)
+struct songNode * freeList(struct songNode *front)
 {
     struct songNode *current = front;
     while (current)

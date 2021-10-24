@@ -47,4 +47,7 @@ int main(){
     printSongListByAlphabet(library, 'h');
     printf("\n(letter b)\n");
     printSongListByAlphabet(library, 'b');
+    printf("\nclearing library\n");
+    clearLibrary(library);
+    printLibrary(library);
 }
