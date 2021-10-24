@@ -50,4 +50,5 @@ int main(){
     printf("\nclearing library\n");
     clearLibrary(library);
     printLibrary(library);
+    printf("done\n");
 }
