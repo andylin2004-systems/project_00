@@ -108,7 +108,7 @@ void deleteSong(struct songNode *library[], char name[100], char artist[100])
     library[slot] = removeNodeByNameAndArtist(library[slot], name, artist);
 }
 
-void clearLibrary(struct songNode *library[])
+void clearLibrary(struct songNode **library)
 {
     int i;
     for (i = 0; i < 27; i++)

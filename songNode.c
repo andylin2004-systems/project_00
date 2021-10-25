@@ -38,6 +38,7 @@ struct songNode *createNode(char name[100], char artist[100])
     struct songNode *new = malloc(sizeof(struct songNode));
     strcpy(new->name, name);
     strcpy(new->artist, artist);
+    new->next = NULL;
     return new;
 }
 
@@ -143,6 +144,7 @@ struct songNode* removeNodeByNameAndArtist(struct songNode *front, char name[100
             if (prev == current)
             {
                 front = current->next;
+                free(current);
             }
             else
             {
@@ -154,15 +156,17 @@ struct songNode* removeNodeByNameAndArtist(struct songNode *front, char name[100
         current = next;
         next = next->next;
     }
+    return front;
 }
 
 struct songNode * freeList(struct songNode *front)
 {
-    struct songNode *current = front;
-    while (current)
+    struct songNode *temp;
+    while (front)
     {
-        struct songNode *temp = current;
-        free(current);
-        current = current->next;
+        temp = front->next;
+        free(front);
+        front = temp;
     }
+    return front;
 }

@@ -18,7 +18,7 @@ int main(){
     print_list(singleSong);
     printf("\nprint node\n");
     print_node(singleSong);
-    printf("find artist\n");
+    printf("\nfind artist\n");
     findNodeByArtist(singleSong, "hippo campus");
     printf("find node\n");
     findNodeByNameAndArtist(singleSong, "time", "pink floyd");
@@ -28,7 +28,7 @@ int main(){
     returnRandomNode(singleSong);
     returnRandomNode(singleSong);
     printf("remove test\n");
-    removeNodeByNameAndArtist(singleSong,"chemical bond", "deathpact");
+    singleSong = removeNodeByNameAndArtist(singleSong,"chemical bond", "death pact");
     print_list(singleSong);
     printf("free list test\n");
     singleSong = freeList(singleSong);
