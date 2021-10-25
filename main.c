@@ -3,6 +3,36 @@
 #include "songNode.h"
 
 int main(){
+    struct songNode *singleSong = createNode("time", "pink floyd");
+    printf("adding song to a linked list (front)\n");
+    singleSong = addToFront(singleSong, createNode("thunderstruck", "ac/dc"));
+    printf("adding song to a linked list (alpha order) and print list\n");
+    singleSong = addBasedOnAlphabet(singleSong, createNode("alive", "pearl jam"));
+    singleSong = addBasedOnAlphabet(singleSong, createNode("even flow", "pearl jam"));
+    singleSong = addBasedOnAlphabet(singleSong, createNode("yellow ledbetter", "pearl jam"));
+    singleSong = addBasedOnAlphabet(singleSong, createNode("paranoid android", "radiohead"));
+    singleSong = addBasedOnAlphabet(singleSong, createNode("street spirit (fade out)", "radiohead"));
+    singleSong = addBasedOnAlphabet(singleSong, createNode("chemical bond", "death pact"));
+    singleSong = addBasedOnAlphabet(singleSong, createNode("sophie so", "hippo campus"));
+    singleSong = addBasedOnAlphabet(singleSong, createNode("elephant boys", "hippo campus"));
+    print_list(singleSong);
+    printf("\nprint node\n");
+    print_node(singleSong);
+    printf("find artist\n");
+    findNodeByArtist(singleSong, "hippo campus");
+    printf("find node\n");
+    findNodeByNameAndArtist(singleSong, "time", "pink floyd");
+    printf("\ncomparing song comparing between 1st three %d\m", checkIfShouldPlaceAlphabet(singleSong, singleSong->next, singleSong->next->next));
+    printf("check random\n");
+    returnRandomNode(singleSong);
+    returnRandomNode(singleSong);
+    returnRandomNode(singleSong);
+    printf("remove test\n");
+    removeNodeByNameAndArtist(singleSong,"chemical bond", "deathpact");
+    print_list(singleSong);
+    printf("free list test\n");
+    singleSong = freeList(singleSong);
+    print_list(singleSong);
     struct songNode *library = allocateSongs();
     addSong(library, createNode("thunderstruck", "ac/dc"));
     addSong(library, createNode("alive", "pearl jam"));

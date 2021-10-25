@@ -10,7 +10,28 @@ struct songNode
     struct songNode *next;
 };
 
-int checkIfShouldPlaceAlphabet(struct songNode *prev, struct songNode *toInsert, struct songNode *next);
+int checkIfShouldPlaceAlphabet(struct songNode *prev, struct songNode *toInsert, struct songNode *next)
+{
+    if (strcmp(prev->artist, toInsert->artist) < 0 && strcmp(toInsert->artist, next->artist) < 0)
+    {
+        return 1;
+    }else if (strcmp(prev->artist, toInsert->artist) == 0 || strcmp(toInsert->artist, next->artist) == 0){
+        if (strcmp(prev->name, toInsert->name) < 0 && strcmp(toInsert->name, next->name) < 0)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    return 0;
+}
+
+void print_node(struct songNode *node)
+{
+    printf("{%s, %s}", node->artist, node->name);
+}
 
 struct songNode *createNode(char name[100], char artist[100])
 {
@@ -52,27 +73,6 @@ struct songNode * addBasedOnAlphabet(struct songNode *front, struct songNode *to
     //assuming that there is nothing else after
     prev->next = toInsert;
     return front;
-}
-
-int checkIfShouldPlaceAlphabet(struct songNode *prev, struct songNode *toInsert, struct songNode *next)
-{
-    if (strcmp(prev->artist, toInsert->artist) < 0 && strcmp(toInsert->artist, next->artist) < 0)
-    {
-        if (strcmp(prev->name, toInsert->name) < 0 && strcmp(toInsert->name, next->name) < 0)
-        {
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-    return 0;
-}
-
-void print_node(struct songNode *node)
-{
-    printf("{%s, %s}", node->artist, node->name);
 }
 
 void print_list(struct songNode *front)
